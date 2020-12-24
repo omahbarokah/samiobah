@@ -43,5 +43,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('detail-pesanan', function($user, Pesanan $pesanan) {
             return ($user->peran === 'admin') || $user->id === $pesanan->user_id;
         });
+        
+        Gate::define('faktur-pesanan', function($user, Pesanan $pesanan) {
+            return ($user->peran === 'admin') || $user->id === $pesanan->user_id;
+        });
     }
 }

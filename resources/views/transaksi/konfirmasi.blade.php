@@ -3,7 +3,7 @@
 @section('title', __('Konfirmasi Pesanan Masuk'))
 
 @section('admin.content')
-    <div class="col-md-8" x-data="init()">
+    <div class="col" x-data="init()">
         <div class="card">
             <div class="card-header">
                 <ul class="nav nav-pills card-header-pills">
@@ -29,6 +29,7 @@
                                 <td>{{ __('ID') }}</td>
                                 <td>{{ __('Dari') }}</td>
                                 <td>{{ __('Pesanan') }}</td>
+                                <td>{{ __('Status') }}</td>
                                 <td>{{ __('Aksi') }}</td>
                             </tr>
                         </thead>
@@ -38,6 +39,7 @@
                                     <td>{{ $keranjang->id }}</td>
                                     <td>{{ $keranjang->customer->name }}</td>
                                     <td>{{ $keranjang->daftarItemInline() }}</td>
+                                    <td>{{ $keranjang->pesanan_status}}</td>
                                     <td>
                                         <a href="{{ route('detail.pesanan', ['pesanan' => $keranjang]) }}" class="btn btn-sm btn-success">{{ __('Detail') }}</a>
                                         <a href="{{ route('konfirmasi.pesanan', ['pesanan' => $keranjang]) }}" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-konfirmasi" @click="konfirmasi($event.target)">{{ __('Konfirmasi') }}</a>

@@ -21,7 +21,7 @@ class PesananController extends Controller
 
     public function konfirmasi()
     {
-        $pesanan = Pesanan::wherePesananStatus('menunggu-konfirmasi')->paginate();
+        $pesanan = Pesanan::paginate();
 
         return view('transaksi.konfirmasi', compact('pesanan'));
     }
@@ -70,5 +70,12 @@ class PesananController extends Controller
         Gate::authorize('detail-pesanan', $pesanan);
 
         return view('transaksi.detail', compact('pesanan'));
+    }
+    
+    public function faktur(Pesanan $pesanan)
+    {
+        Gate::authorize('faktur-pesanan', $pesanan);
+
+        return view('transaksi.invoice', compact('pesanan'));
     }
 }

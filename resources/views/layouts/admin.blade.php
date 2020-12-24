@@ -11,7 +11,7 @@
                 <x-alert :type="session('notice')['type']" :text="session('notice')['text']" :dismissible="session('notice')['dismissible']"></x-alert>
             @endif
 
-            <div class="row justify-content-center">
+            <div class="row">
                 @yield('admin.content')
             </div>
         </div>

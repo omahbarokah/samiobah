@@ -33,29 +33,32 @@
             @else
                 @can('kelola-pesanan')
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                            <div class="d-inline-block">
-                                <span>{{ __('Keranjang') }}</span>
-                                @if(auth()->user()->keranjang()->item->isNotEmpty())
-                                    <span class="badge badge-pill badge-success">{{ auth()->user()->keranjang()->item->count() }}</span>
-                                @endif
-                            </div>
-                            <span class="caret"></span>
+                        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fas fa-shopping-cart"></i> 
+                        @if(auth()->user()->keranjang()->item->isNotEmpty())
+                        <span class="badge navbar-badge badge-success">{{ auth()->user()->keranjang()->item->count() }}</span>
+                        @endif 
                         </a>
-
-                        <div class="dropdown-menu shadow-sm dropdown-menu-right">
-                            @if(auth()->user()->keranjang()->item->isNotEmpty())
-                                @foreach(auth()->user()->keranjang()->item as $item)
-                                    <div class="dropdown-item-text small">
-                                        {{ $item->produk->produk_nama }} &times; {{ $item->item_jumlah }}</div>
-                                @endforeach
-                            @else
-                                <small class="dropdown-item-text">{{ __('Ups keranjang kamu masih kosong.') }}</small>
-                            @endif
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                            <span class="dropdown-header">
+                                {{ __('Keranjang') }}
+                            </span>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-center" href="{{ route('keranjang.pesanan') }}">{{ __('Lihat Keranjang') }} &raquo;</a>
+                             @if(auth()->user()->keranjang()->item->isNotEmpty())
+                            @foreach(auth()->user()->keranjang()->item as $item)
+                                <div class="dropdown-item">
+                                    {{ $item->produk->produk_nama }}
+                                    <span class="float-right text-sm">{{ $item->item_jumlah }}</span>
+                                </div> 
+                            @endforeach
+                            @else
+                            <small class="dropdown-item-text">{{ __('Ups keranjang kamu masih kosong.') }}</small>
+                            @endif 
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('keranjang.pesanan') }}" class="dropdown-item dropdown-footer">{{ __('Lihat Keranjang') }} &raquo;</a>
                         </div>
                     </li>
+                
                 @endcan
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -80,7 +83,7 @@
 @auth
 @php($menunggu = \App\Pesanan::where('pesanan_status', '=', 'menunggu-konfirmasi')->count())
 
-<aside class="main-sidebar sidebar-light-primary elevation-2" style="z-index: 800">
+<aside class="main-sidebar sidebar-light-primary elevation-3" style="z-index: 800">
     <a href="{{ url('/') }}" class="brand-link"> 
         <img src="{{ asset('img/logo.png') }}" alt="{{ config('app.name', 'SAMI OBAH') }}" class="brand-image"
              style="opacity: .8"  loading="lazy"> 
@@ -89,13 +92,13 @@
     <div class="sidebar">  
     
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false"> 
+            <ul class="nav nav-pills nav-sidebar flex-column  " data-widget="treeview" role="menu" data-accordion="false"> 
                 
                 <li class="nav-header" hidden></li> 
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ Request::segment(2) === 'dashboard' ? 'active' : null }}">
-                        <i class="nav-icon fa fa-home-o"></i>
+                    <a href="{{ route('admin') }}" class="nav-link {{ Request::segment(2) === 'dashboard' ? 'active' : null }}">
+                        <i class="nav-icon fas fa-round"></i>
                         <p>{{ __('Dashboard') }}</p>
                     </a>
                 </li> 

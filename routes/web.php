@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'KatalogController')->name('katalog');
 
+Route::get('/offline',  function () { return view('offline'); })->name('katalog');
+
 Auth::routes([
     // Menonaktifkan rute untuk verifikasi akun.
     'verify' => false,
