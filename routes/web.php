@@ -36,7 +36,7 @@ Route::middleware('auth')->prefix('keranjang')->group(function () {
 });
 
 Route::middleware('auth')->prefix('admin')->group(function () {
-    Route::get('/', 'AdminController')->name('admin');
+    Route::get('/', 'AdminController')->name('admin'); 
     Route::prefix('pengguna')->group(function () {
         Route::get('/', 'PenggunaController@daftarPengguna')->name('kelola.pengguna');
         Route::get('/buat', 'PenggunaController@buat')->name('buat.pengguna');

@@ -5,4 +5,4 @@ deployment:
 #    - /bin/cp -r * $DEPLOYPATH #copy all from root
     - /bin/cp -r ./public/* $DEPLOYPATH/public_html/dev
     - /bin/cp ./public/js/*.js $DEPLOYPATH/public_html/dev/js
-    - /bin/cp ./public/css/*.css $DEPLOYPATH/public_html/dev/css
+    - /bin/cp ./public/css/*.css $DEPLOYPATH/public_html/dev/css  
