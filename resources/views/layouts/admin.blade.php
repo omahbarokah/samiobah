@@ -2,8 +2,11 @@
 
 @section('content')
     <x-navigation-bar></x-navigation-bar>
-    <main class="py-4">
-        <div class="container">
+    <main class="content-wrapper">
+        
+        <div class="content-header">
+        </div>
+        <div class="content container">
             @if(session('notice'))
                 <x-alert :type="session('notice')['type']" :text="session('notice')['text']" :dismissible="session('notice')['dismissible']"></x-alert>
             @endif
