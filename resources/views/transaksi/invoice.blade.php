@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', __('Konfirmasi Pesanan Masuk'))
+@section('title', __('Invoice'))
 
 @section('admin.content')
     <div class="col-md-8" x-data="init()">
